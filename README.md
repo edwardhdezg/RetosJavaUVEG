@@ -1,14 +1,16 @@
 # Hola, mi nombre es Eduardo! 👋
-## 🚀 Futuro Ingeniero en Sistemas computacionales
+## 🚀 Futuró Ingeniero en Sistemas Computacionales
 Quiero comparir los retos que he realizado durante los modulos de porgamacios y topicos avanzados en programacion dentro de la Universidad Virtual del Estado de Guanajuato.
 
 Esto con la finalidad de poder ayudar a quienes aún no entienden el lenguaje de programacion en java o lo que se les solcita en el reto.
 
-Mi recomendacion es que no copien el codigo, vean como se soluciona el problema y ustedes intenten realizarlo de otra forma, si bien en la programacion hay muchisimas formas de obtener el mismo resultado.
+Mi recomendacion es que no copien el código, vean como se soluciona el problema y ustedes intenten realizarlo de otra forma, si bien en la programacion hay muchisimas formas de obtener el mismo resultado.
 
-## ☕ Invitame un caffe
+## ☕ Invitame un café
 
-Si te ha ayudado alguna de mis soluciones o requieres de ayuda extra puedes contactarme para poder resolver el problema.
+Un café siempre es bien recibido, si alguna de mis soluciones te ha ayudado a seguir avanzando y quieres invitarme un café , que esperas !
+
+Si tienes algun reto y necesitas que lo implemente, contactame para darte asesoria, doy clases los jueves no co¿bro mucho jajaj
 
 
 ## 🔗 Contactame
