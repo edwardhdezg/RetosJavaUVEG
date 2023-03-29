@@ -6,8 +6,7 @@ package com.mycompany.olimpiadas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Arrays;
 import java.util.regex.Pattern;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -26,7 +25,10 @@ public class ListenButton implements ActionListener {
     private JTextArea areaTexto;
     private JTextArea areaNombres;
     private JTextField campoNombre;
+    private StringBuilder sb;
     private ArrayList<String> nombres = new ArrayList();
+    private ArrayList<String> resultados = new ArrayList();
+    private Object participante;
     
     public void recibeCampoNombre(JTextField campoNombre){
     this.campoNombre=campoNombre;
@@ -82,29 +84,34 @@ public class ListenButton implements ActionListener {
             }
             muestraNombres();
         } else if (e.getSource() == botonIniciar) {
-            if(nombres.isEmpty()){
+            if(nombres.isEmpty()){ //Condicion si el array de participantes esta vacio
                 System.out.println("No se puede iniciar a carrera sin participantes");
                 JOptionPane.showMessageDialog(null, "No se puede iniciar a carrera sin participantes", "Alerta", JOptionPane.WARNING_MESSAGE);
-            }else if(nombres.size()<5){
+            }else if(nombres.size()<5){ //Condicion si hay mas de 5 participantes
                 JOptionPane.showMessageDialog(null, "Debe de haber al menos 5 participantes ", "Alerta", JOptionPane.WARNING_MESSAGE);
-            }else{
-                // Crear una instancia de SimulacionCarrera
-                SimulacionCarrera simulacion = new SimulacionCarrera(nombres);
-                // Crear un hilo para ejecutar la simulación
-                Thread hiloSimulacion = new Thread(simulacion);
-                hiloSimulacion.start();
-
-                try {
-                    // Esperar a que termine la simulación
-                    hiloSimulacion.join();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(ListenButton.class.getName()).log(Level.SEVERE, null, ex);
+            }else{ //Comienza la carrera
+                
+                Carrera[] participantes = new Carrera[nombres.size()];
+                for (int i = 0; i < nombres.size(); i++) {
+                    participantes[i] = new Carrera(nombres.get(i),this.areaTexto);
                 }
+                
+                
+                Arrays.sort(participantes, (a, b) -> a.getTiempoCarrera() - b.getTiempoCarrera());
 
-                // Obtener el resultado de la simulación como un String
-               
-                String resultado = simulacion.getResultado();
-                this.areaTexto.setText(resultado);
+                for (Carrera participante : participantes) {
+                    Thread hilo = new Thread(participante);
+                    hilo.start();
+                    try {
+                        hilo.join();
+                        System.out.println(participante.getResultado());
+                        
+                    } catch (InterruptedException b) {
+                        b.printStackTrace();
+                    }
+                }
+              
+                
             }
         } else if (e.getSource() == botonReiniciar) {
             nombres.clear();
@@ -117,9 +124,10 @@ public class ListenButton implements ActionListener {
     }
     
     public void muestraNombres(){
-        StringBuilder sb = new StringBuilder();
+        sb = new StringBuilder();
+        int contador = 1;
         for (String nombre : nombres) {
-            sb.append(nombre).append("\n");
+            sb.append(contador++).append("- ").append(nombre).append("\n");
         }
         this.areaNombres.setText(sb.toString());
     }
