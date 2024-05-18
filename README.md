@@ -12,8 +12,6 @@ Un café siempre es bien recibido, si alguna de mis soluciones te ha ayudado a s
 
 Si tienes algun reto y necesitas que lo implemente, contactame para darte asesoria, doy clases los jueves no cobro mucho jajaj
 
-![Descripción del GIF](https://i.makeagif.com/media/9-30-2022/IWetDA.mp4)
-
 
 ## 🔗 Contactame
 
